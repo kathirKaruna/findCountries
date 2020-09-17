@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Task In JavaScript</title>
+	<script src="Countries.js"></script>
+
+<style>
+	input{
+		width: 200px;
+		height: 30px;
+	}   
+   input[type="pwd"]{
+     margin-left: 10px;
+   }   
+   button{
+   	padding: 10px 20px;
+   	font-size: 20px;
+   }
+   #msg{
+   	margin-left: 10px;
+   	font-size: 20px;
+   }  
+   p{
+   	display: inline-block;
+   }
+   #cities1{
+   	margin-left: 100px;
+   }
+    #cities2{
+   	margin-left: 100px;
+   }
+</style>
+</head>
+
+<body>
+     
+
+	 <!--<label for="uName">User Name :</label>
+	 <input type="text" name="uName" id="uName" autocomplete="on"><span id="msg"></span><br><br>
+      <p id="names"></p>
+	 <button type="button" onclick="addName()">Add</button><br><br>
+	 <hr style="border:2px solid black;">-->
+
+	  <label for="country">Type Your Country Name:</label>
+	 <input type="text" name="cty" id="cty" autocomplete="on"><br><br>
+      
+	 <button type="button" onclick="callFilterFunction()">Search</button><br><br>
+	 <p id="cities"></p>
+
+	  <p id="cities1" style=""></p>
+	  <p id="cities2" style=""></p>
+	 
+	<!-- <div id="pwdField">
+		 <label for="pwd">Password :</label>
+		 <input type="pwd" name="pwd" id="pwd" autocomplete="on"><br><br>
+     </div>
+
+	 <button type="button" onclick="disable()" id="hide">Hide</button>
+	 <button type="button" onclick="enable()" id="show">Show</button>-->
+
+
+<script> 
+  
+function callFilterFunction(){
+
+	var searchValue = document.getElementById("cty").value;
+
+	var startsWithText = "";
+    var includeText = "";
+    var equalsText = "";
+   	for(i = 0; i < countryArray.length; i++ ){
+
+   		var countryObj = countryArray[i]; 
+
+        countryObj.code.toLocaleUpperCase();
+        countryObj.code3.toLocaleUpperCase();
+        countryObj.name.toLocaleUpperCase();
+
+
+   		if(null != searchValue && searchValue != ""){
+
+            var search = searchValue.toLocaleUpperCase();
+
+   			if(countryObj.code.startsWith(search) || countryObj.code3.startsWith(search) || 
+   				countryObj.name.startsWith(search)){
+				startsWithText += countryObj.name + "<br>"; 
+   			}
+   			if(countryObj.code.includes(search) || countryObj.code3.includes(search) || 
+   				countryObj.name.includes(search) ){
+				includeText += countryObj.name + "<br>"; 
+   			}
+   			if(countryObj.code == search || countryObj.code3 == search || 
+   				countryObj.name == search ){
+				equalsText += countryObj.name + "<br>"; 
+   			}
+ 
+   		} else{
+			startsWithText += countryObj.name + "<br>";
+			includeText  += countryObj.name + "<br>";
+			equalsText += countryObj.name + "<br>"; 
+   		}  
+   	}  
+   	document.getElementById("cities").innerHTML = startsWithText;
+   	document.getElementById("cities1").innerHTML = includeText;
+   	document.getElementById("cities2").innerHTML = equalsText;
+}
+
+
+callFilterFunction();
+
+	/* var items = [];
+	 var text = "";
+	 var i;
+function addName(){
+     boxvalue = document.getElementById('uName').value;
+     items.push(boxvalue);
+     text = "<ul>"; 
+      for (i = 0; i < items.length; i++) {
+      text += "<li>" + items[i] + "</li>";
+  }
+  text += "</ul>";
+  document.getElementById("names").innerHTML = text;
+}
+
+
+	function disable(){
+ 		document.getElementById("pwdField").style.display = 'none';
+ 		document.getElementById("hide").style.display = 'none';
+ 		document.getElementById("show").style.display = 'block';
+ 		document.getElementById("msg").style.color = 'red';
+ 		document.getElementById("msg").innerHTML = 'Password field disabled successfully';
+ 	}
+
+ 	function enable(){
+ 		document.getElementById("pwdField").style.display = 'block';
+ 		document.getElementById("show").style.display = 'none';
+ 		document.getElementById("hide").style.display = 'block';
+ 		document.getElementById("msg").style.color = 'green';
+ 		document.getElementById("msg").innerHTML = 'Password field enabled successfully';
+ 	}*/
+
+ </script>
+
+</body>
+</html>
